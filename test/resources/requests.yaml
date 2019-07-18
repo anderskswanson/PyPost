@@ -1,0 +1,5 @@
+requests:
+  myrequest:
+    url: "https://foo.com"
+    method: "get"
+    data: "hi I'm some data"

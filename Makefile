@@ -1,8 +1,8 @@
 PY=python3
 COV=coverage
 MAIN=src.main
-TEST=src.test.run_tests
-SOURCES=app/bot/
+TEST=test.run_tests
+SOURCES=src/
 
 .PHONY: test
 
