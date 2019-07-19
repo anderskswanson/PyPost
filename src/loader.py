@@ -1,5 +1,5 @@
 from os.path import join
-from yaml import load
+from yaml import load, FullLoader
 
 
 class LoaderException(Exception):
@@ -11,7 +11,7 @@ class Loader:
     INVALID_YAML_ERR = 'Failed to parse input yaml'
 
     @classmethod
-    def get_yaml(cls, file):
+    def from_file(cls, file):
         content = {}
         file = join(file)
         try:
@@ -22,3 +22,13 @@ class Loader:
         except Exception as e:
             raise LoaderException(cls.INVALID_YAML_ERR, e)
         return content
+
+    @classmethod
+    def from_string(cls, string):
+        content = {}
+        try:
+            content = load(string)
+        except Exception as e:
+            raise LoaderException(cls.INVALID_YAML_ERR, e)
+        return content
+
