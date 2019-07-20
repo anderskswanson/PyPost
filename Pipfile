@@ -9,6 +9,7 @@ verify_ssl = true
 requests = "*"
 pyyaml = "*"
 jinja2 = "*"
+httpretty = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,4 +1,5 @@
 import requests
+import src.schema
 
 GET = 'get'
 HEAD = 'head'
@@ -22,12 +23,11 @@ class InvalidMethodError(Exception):
 
 
 class RequestWrapper:
-    def __init__(self, method, url, **params):
+    def __call__(self, **req):
+        method = req[src.schema.METHOD]
         if method not in http_methods:
-            raise InvalidMethodError('Unknown http method')
-        self._method = method
-        self._url = url
-        self._params = params
-
-    def __call__(self):
-        return http_methods[self._method](self._url, self._params)
+            raise InvalidMethodError('Method {} not a valid http method'
+                                     .format(method))
+        url = req[src.schema.URL]
+        arg = req[src.schema.ARGS]
+        return http_methods[method](url, **arg)

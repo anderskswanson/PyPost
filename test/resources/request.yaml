@@ -1,0 +1,9 @@
+requests:
+  testrequest:
+    method: 'get'
+    url: 'http://foo.com'
+    arguments:
+      data: 'test body'
+      headers:
+        header1: 'this is a test header'
+        header2: 'another test header'
